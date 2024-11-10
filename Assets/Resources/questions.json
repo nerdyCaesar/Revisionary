@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the formula for Force?",
+            "answers": ["F = ma", "F = mv", "F = m^2", "F = a/v"],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is the unit for energy?",
+            "answers": ["Joule", "Watt", "Ampere", "Volt"],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is the acceleration due to gravity on Earth?",
+            "answers": ["9.8 m/s²", "10 m/s²", "9.81 m/s²", "8.9 m/s²"],
+            "correctAnswerIndex": 2
+        }
+    ]
+}
