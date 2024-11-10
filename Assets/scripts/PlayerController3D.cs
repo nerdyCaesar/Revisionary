@@ -31,11 +31,12 @@ public class PlayerController3D : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Platform"))
+    void OnCollisionEnter(Collision collision) {
+        // Check if the collision is with any surface that the player can jump from
+        if (collision.gameObject.CompareTag("normal") || collision.gameObject.CompareTag("AnswerPlatform"))
         {
             isGrounded = true;
         }
     }
+
 }

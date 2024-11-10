@@ -6,7 +6,9 @@ public class answerplatform : MonoBehaviour
 {
     public string answerText;  // The answer text to display
     public bool isCorrect;     // Whether this platform is the correct answer
-    private TextMeshProUGUI textMeshPro; // Reference to the TextMeshProUGUI component
+    private TextMeshProUGUI textMeshPro; // Reference to the TextMeshProUGUI 
+    
+    public GameObject player;
     public GameObject End;
     public TextMeshProUGUI win;
 
@@ -63,6 +65,7 @@ public class answerplatform : MonoBehaviour
                     Debug.Log("Wrong Answer on platform: " + gameObject.name);
                     win.text = "You Lose!";
                     End.SetActive(true);
+                    player.GetComponent<PlayerController3D>().enabled = false; // Disable player movement
                 }
             }
             else
@@ -72,30 +75,30 @@ public class answerplatform : MonoBehaviour
         }
     }
 
-    private IEnumerator SlidePlayerAndLoadNextQuestion(GameObject player)
-    {
-        // Slide the player to a new position smoothly (adjust values as needed)
-        Vector3 targetPosition = player.transform.position + new Vector3(5f, 0, 0); // Slide distance (e.g., 5 units to the right)
-        float slideDuration = 1f; // Slide duration in seconds
-        float elapsedTime = 0f;
+    // private IEnumerator SlidePlayerAndLoadNextQuestion(GameObject player)
+    // {
+    //     // Slide the player to a new position smoothly (adjust values as needed)
+    //     Vector3 targetPosition = player.transform.position + new Vector3(5f, 0, 0); // Slide distance (e.g., 5 units to the right)
+    //     float slideDuration = 1f; // Slide duration in seconds
+    //     float elapsedTime = 0f;
 
-        while (elapsedTime < slideDuration)
-        {
-            player.transform.position = Vector3.Lerp(player.transform.position, targetPosition, (elapsedTime / slideDuration));
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+    //     while (elapsedTime < slideDuration)
+    //     {
+    //         player.transform.position = Vector3.Lerp(player.transform.position, targetPosition, (elapsedTime / slideDuration));
+    //         elapsedTime += Time.deltaTime;
+    //         yield return null;
+    //     }
 
-        player.transform.position = targetPosition; // Ensure the player ends at the exact target position
+    //     player.transform.position = targetPosition; // Ensure the player ends at the exact target position
 
-        // Generate the next question after the slide is complete
-        FindObjectOfType<QuestionLoader>().DisplayRandomQuestion();
+    //     // Generate the next question after the slide is complete
+    //     FindObjectOfType<QuestionLoader>().DisplayRandomQuestion();
 
-        // Reset UI or gameplay logic as needed to prepare for the next question
-        win.text = ""; // Clear the win/lose message
-        End.SetActive(false); // Hide the end game UI
+    //     // Reset UI or gameplay logic as needed to prepare for the next question
+    //     win.text = ""; // Clear the win/lose message
+    //     End.SetActive(false); // Hide the end game UI
 
-    }
+    // }
 
 
 
